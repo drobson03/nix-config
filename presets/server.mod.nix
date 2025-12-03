@@ -5,7 +5,6 @@
       bat
       diff
       direnv
-      fuzzel
       git
       jujutsu
       nixvim
