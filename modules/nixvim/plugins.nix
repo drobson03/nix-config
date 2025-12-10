@@ -1,4 +1,8 @@
-{
+{pkgs, ...}: {
+  programs.nixvim.extraPlugins = [
+    pkgs.vimPlugins.nvim-vtsls
+  ];
+
   programs.nixvim.plugins = {
     blink-cmp = {
       enable = true;

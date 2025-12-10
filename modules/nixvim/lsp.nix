@@ -6,12 +6,12 @@
       biome.enable = true;
       lua_ls = {
         enable = true;
-        settings.telemetry.enable = false;
+        config.telemetry.enable = false;
       };
       nixd.enable = true;
       vtsls = {
         enable = true;
-        settings = {
+        config.settings = {
           complete_function_calls = true;
           vtsls = {
             enableMoveToFileCodeAction = true;
