@@ -44,7 +44,7 @@
           )
         '';
 
-      git.auto-local-bookmark = true;
+      remotes.origin.auto-track-bookmarks = "glob:*";
 
       git.fetch = ["origin" "upstream"];
       git.push = "origin";
