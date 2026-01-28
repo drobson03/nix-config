@@ -1,9 +1,9 @@
 {inputs, ...}: {
   flake.nixosModules.linux-kernel-desktop = {pkgs, ...}: {
     imports = [
-      inputs.self.nixosModules.chaotic-nyx
+      inputs.self.nixosModules.nix-cachyos-kernel
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_cachyos;
+    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
   };
 }
