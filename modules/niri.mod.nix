@@ -307,11 +307,7 @@
     ];
 
     programs.niri.enable = true;
-    programs.uwsm.enable = true;
-    programs.uwsm.waylandCompositors.niri = {
-      prettyName = "Niri";
-      comment = "Niri compositor managed by UWSM";
-      binPath = "${pkgs.niri-stable}/bin/niri-session";
-    };
+
+    services.greetd.settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
   };
 }

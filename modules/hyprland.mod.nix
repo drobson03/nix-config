@@ -198,8 +198,10 @@
     };
   };
 
-  flake.nixosModules.hyprland = {
+  flake.nixosModules.hyprland = {pkgs, ...}: {
     programs.hyprland.enable = true;
     programs.hyprland.withUWSM = true;
+
+    services.greetd.settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start Hyprland'";
   };
 }

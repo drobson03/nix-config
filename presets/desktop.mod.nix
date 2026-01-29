@@ -34,6 +34,7 @@
       clean-tmp-on-boot
       extra-fonts
       ghostty
+      greetd
       gtk
       home-manager
       hyprlock

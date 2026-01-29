@@ -1,6 +1,7 @@
 {
   flake.homeModules.waybar = {
     programs.waybar.enable = true;
+    programs.waybar.systemd.enable = true;
     programs.waybar.settings.primary = {
       modules-center = [
         "clock"
@@ -140,10 +141,6 @@
         margin-left: 0.5rem;
       }
     '';
-
-    programs.niri.settings.spawn-at-startup = [
-      {argv = ["waybar"];}
-    ];
 
     programs.niri.settings.binds."Mod+Shift+W".action.spawn = ["sh" "-c" "pkill waybar && waybar"];
 
