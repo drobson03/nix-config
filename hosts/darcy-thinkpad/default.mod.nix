@@ -21,6 +21,7 @@ in {
         "${inputs.nixos-hardware}/common/cpu/amd/pstate.nix"
         "${inputs.nixos-hardware}/common/gpu/amd"
         "${inputs.nixos-hardware}/common/pc/ssd"
+        "${inputs.nixos-hardware}/common/wifi/mediatek/mt7925"
 
         {
           home-manager.sharedModules = with inputs.self.homeModules; [
