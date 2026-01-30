@@ -5,6 +5,9 @@
 !hosts/
 !hosts/**/
 !hosts/**/*.nix
+!images/
+!images/**/
+!images/**/*.nix
 !modules/
 !modules/**/
 !modules/**/*.nix

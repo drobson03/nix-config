@@ -1,9 +1,15 @@
 {inputs, ...}: {
-  flake.nixosModules.linux-kernel-desktop = {pkgs, ...}: {
+  flake.nixosModules.linux-kernel-desktop = {
+    lib,
+    pkgs,
+    ...
+  }: let
+    inherit (lib) mkDefault;
+  in {
     imports = [
       inputs.self.nixosModules.nix-cachyos-kernel
     ];
 
-    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    boot.kernelPackages = mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest;
   };
 }
