@@ -11,6 +11,7 @@ in {
         {nixpkgs.hostPlatform = system;}
 
         bluetooth
+        niri
         preset-desktop
 
         user-drobson03
