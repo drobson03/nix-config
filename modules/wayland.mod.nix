@@ -1,11 +1,18 @@
 {
-  flake.homeModules.wayland = {pkgs, ...}: {
+  flake.homeModules.wayland = {
+    config,
+    lib,
+    pkgs,
+    ...
+  }: let
+    inherit (lib) mkIf;
+  in {
     home.packages = [
       pkgs.wl-clipboard
       pkgs.xdg-utils
     ];
 
-    programs.niri.settings.environment = {
+    programs.niri.settings.environment = mkIf config.programs.niri.enable {
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       XDG_SESSION_TYPE = "wayland";
       MOZ_ENABLE_WAYLAND = "1";
