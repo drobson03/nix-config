@@ -14,6 +14,7 @@
       hyprpaper
       jujutsu
       mako
+      niri
       nixvim
       packages
       pipewire
@@ -40,6 +41,7 @@
       immutable-users
       linux-kernel-desktop
       network-manager
+      niri
       nix-ld
       nix
       openssh

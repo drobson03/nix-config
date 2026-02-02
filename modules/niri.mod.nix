@@ -7,6 +7,13 @@
     ];
 
     programs.niri.settings = {
+      environment = {
+        ELECTRON_OZONE_PLATFORM_HINT = "auto";
+        XDG_SESSION_TYPE = "wayland";
+        MOZ_ENABLE_WAYLAND = "1";
+        SDL_VIDEODRIVER = "wayland,x11";
+      };
+
       input = {
         keyboard = {
           repeat-delay = 300;
@@ -297,7 +304,13 @@
     ];
   };
 
-  flake.nixosModules.niri = {pkgs, ...}: {
+  flake.nixosModules.niri = {
+    lib,
+    pkgs,
+    ...
+  }: let
+    inherit (lib) mkDefault;
+  in {
     imports = [
       inputs.niri.nixosModules.niri
     ];
@@ -306,7 +319,7 @@
       inputs.niri.overlays.niri
     ];
 
-    programs.niri.enable = true;
+    programs.niri.enable = mkDefault true;
 
     services.greetd.settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
   };
