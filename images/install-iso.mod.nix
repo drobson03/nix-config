@@ -8,7 +8,7 @@
       modules = with inputs.self.nixosModules; [
         {nixpkgs.hostPlatform = system;}
 
-        preset-server
+        preset-desktop
 
         "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix"
 
