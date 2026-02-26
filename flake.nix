@@ -6,7 +6,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     niri.url = "github:sodiboo/niri-flake";
     stylix = {
       url = "github:nix-community/stylix";
