@@ -11,6 +11,7 @@ in {
         {nixpkgs.hostPlatform = system;}
 
         bluetooth
+        docker
         preset-desktop
 
         user-drobson03

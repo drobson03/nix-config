@@ -9,7 +9,13 @@
     users.users.${username} = {
       isNormalUser = true;
       description = fullName;
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups =
+        ["networkmanager" "wheel"]
+        ++ (
+          if config.virtualisation.docker.enable
+          then ["docker"]
+          else []
+        );
       hashedPasswordFile = config.age.secrets.drobson03.path;
     };
 
