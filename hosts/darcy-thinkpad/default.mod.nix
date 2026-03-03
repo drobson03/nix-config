@@ -12,6 +12,7 @@ in {
 
         bluetooth
         docker
+        obsidian
         preset-desktop
 
         user-drobson03
