@@ -4,6 +4,8 @@
   programs.nixvim.lsp = {
     servers = {
       biome.enable = true;
+      gopls.enable = true;
+      intelephense.enable = true;
       lua_ls = {
         enable = true;
         config.telemetry.enable = false;
