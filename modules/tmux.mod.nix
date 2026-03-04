@@ -18,6 +18,8 @@
         ''
           set -g renumber-windows on
           set-option -g focus-events on
+          set-option -g extended-keys on
+          set -g extended-keys-format csi-u
 
           bind -T copy-mode-vi v send-keys -X begin-selection
           bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
