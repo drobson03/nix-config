@@ -13,6 +13,7 @@ in {
         bluetooth
         docker
         obsidian
+        nixvim
         preset-desktop
 
         user-drobson03

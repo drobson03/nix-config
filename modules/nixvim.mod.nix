@@ -15,4 +15,11 @@
     programs.nixvim.vimdiffAlias = true;
     programs.nixvim.withNodeJs = true;
   };
+
+  flake.nixosModules.nixvim = {
+    unfree.allowedNames = [
+      "nvim-vtsls"
+      "telescope-sg"
+    ];
+  };
 }

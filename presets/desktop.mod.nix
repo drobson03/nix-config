@@ -44,6 +44,7 @@
       niri
       nix-ld
       nix
+      nixvim
       openssh
       packages
       pipewire
