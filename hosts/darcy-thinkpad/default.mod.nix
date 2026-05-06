@@ -19,6 +19,17 @@ in {
         user-drobson03
         user-root
 
+        {
+          home-manager.sharedModules = [inputs.self.homeModules.pi];
+
+          nix.settings = {
+            extra-substituters = ["https://cache.numtide.com"];
+            extra-trusted-public-keys = [
+              "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+            ];
+          };
+        }
+
         ./hardware.nix
         "${inputs.nixos-hardware}/common/cpu/amd"
         "${inputs.nixos-hardware}/common/cpu/amd/pstate.nix"
@@ -28,7 +39,6 @@ in {
 
         {
           home-manager.sharedModules = with inputs.self.homeModules; [
-            opencode
             vim-mode
 
             {home.stateVersion = stateVersion;}
