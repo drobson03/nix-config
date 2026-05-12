@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = [
     pkgs.alejandra
+    pkgs.prettierd
     pkgs.stylua
   ];
 
@@ -38,6 +39,7 @@
         markdown = javascriptFormatters;
         mdx = javascriptFormatters;
         nix = ["alejandra"];
+        php = ["prettierd"];
         typescript = javascriptFormatters;
         typescriptreact = javascriptFormatters;
       };
