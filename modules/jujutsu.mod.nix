@@ -11,8 +11,6 @@
       aliases.log-patch = ["log" "--patch"];
       aliases.log-patch-ancestors = ["log" "--patch" "--revisions" "::"];
 
-      aliases.resolve-ast = ["resolve" "--tool" "mergiraf"];
-
       aliases.tug = ["bookmark" "move" "--from" "closest(@-)" "--to" "closest_pushable(@)"];
 
       revset-aliases."closest(to)" = "heads(::to & bookmarks())";

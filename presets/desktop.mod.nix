@@ -14,6 +14,7 @@
       hyprpaper
       jujutsu
       mako
+      mergiraf
       niri
       nixvim
       packages

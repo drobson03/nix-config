@@ -7,6 +7,7 @@
       direnv
       git
       jujutsu
+      mergiraf
       nixvim
       packages
       ripgrep
