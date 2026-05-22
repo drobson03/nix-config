@@ -18,6 +18,7 @@
 
   flake.nixosModules.nixvim = {
     unfree.allowedNames = [
+      "intelephense"
       "nvim-vtsls"
       "telescope-sg"
     ];
