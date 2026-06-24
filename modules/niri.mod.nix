@@ -4,6 +4,7 @@
       pkgs.brightnessctl
       pkgs.hyprpicker
       pkgs.nautilus
+      pkgs.xwayland-satellite
     ];
 
     programs.niri.settings = {
@@ -318,6 +319,8 @@
     nixpkgs.overlays = [
       inputs.niri.overlays.niri
     ];
+
+    programs.niri.package = pkgs.niri-unstable;
 
     programs.niri.enable = mkDefault true;
 
