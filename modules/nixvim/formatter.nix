@@ -24,6 +24,7 @@
       format_on_save.timeout_ms = 1000;
       formatters_by_ft = let
         javascriptFormatters = [
+          "oxfmt"
           "biome-check"
           "prettierd"
           "prettier"

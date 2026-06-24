@@ -1,4 +1,10 @@
-{inputs, ...}: {
+{inputs, ...}: let
+  unfreeNames = [
+    "intelephense"
+    "nvim-vtsls"
+    "telescope-sg"
+  ];
+in {
   flake.homeModules.nixvim = {lib, ...}: let
     inherit (lib.filesystem) listFilesRecursive;
   in {
@@ -14,13 +20,12 @@
     programs.nixvim.vimAlias = true;
     programs.nixvim.vimdiffAlias = true;
     programs.nixvim.withNodeJs = true;
+    programs.nixvim.nixpkgs.source = inputs.nixpkgs;
+    programs.nixvim.nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) unfreeNames;
   };
 
   flake.nixosModules.nixvim = {
-    unfree.allowedNames = [
-      "intelephense"
-      "nvim-vtsls"
-      "telescope-sg"
-    ];
+    unfree.allowedNames = unfreeNames;
   };
 }

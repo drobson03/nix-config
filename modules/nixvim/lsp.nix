@@ -12,7 +12,7 @@
       };
       nixd.enable = true;
       vtsls = {
-        enable = true;
+        enable = false;
         config.settings = {
           complete_function_calls = true;
           vtsls = {
@@ -39,7 +39,26 @@
           };
         };
       };
+      tsgo = {
+        enable = true;
+        settings = {
+          updateImportsOnFileMove.enabled = "always";
+          suggest = {
+            completeFunctionCalls = true;
+          };
+          inlayHints = {
+            enumMemberValues.enabled = true;
+            functionLikeReturnTypes.enabled = true;
+            parameterNames.enabled = "literals";
+            parameterTypes.enabled = true;
+            propertyDeclarationTypes.enabled = true;
+            variableTypes.enabled = false;
+          };
+        };
+      };
       tailwindcss.enable = true;
+      oxlint.enable = true;
+      oxfmt.enable = true;
     };
 
     keymaps = [
