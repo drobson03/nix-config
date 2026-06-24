@@ -31,18 +31,26 @@ in {
         }
 
         ./hardware.nix
-        "${inputs.nixos-hardware}/common/cpu/amd"
-        "${inputs.nixos-hardware}/common/cpu/amd/pstate.nix"
-        "${inputs.nixos-hardware}/common/gpu/amd"
-        "${inputs.nixos-hardware}/common/pc/ssd"
+        "${inputs.nixos-hardware}/lenovo/thinkpad/p14s/amd/gen6"
         "${inputs.nixos-hardware}/common/wifi/mediatek/mt7925"
 
         {
           home-manager.sharedModules = with inputs.self.homeModules; [
             vim-mode
 
+            ({pkgs, ...}: {
+              home.packages = with pkgs; [
+                teams-for-linux
+
+                inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
+              ];
+            })
             {home.stateVersion = stateVersion;}
           ];
+
+          hardware.keyboard.qmk.enable = true;
 
           system.stateVersion = stateVersion;
 
