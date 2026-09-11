@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nixvim.diagnostic.settings.virtual_text = true;
 
   programs.nixvim.lsp = {
@@ -41,6 +41,7 @@
       };
       tsgo = {
         enable = true;
+        package = pkgs.typescript;
         settings = {
           updateImportsOnFileMove.enabled = "always";
           suggest = {
