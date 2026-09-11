@@ -59,4 +59,6 @@ in {
       };
     }
   ];
+
+  hardware.facter.reportPath = ./facter.json;
 }
