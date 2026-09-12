@@ -26,8 +26,9 @@
       immutable-users
       linux-kernel-server
       network-manager
-      nix-ld
       nix
+      nix-ld
+      nixvim
       openssh
       packages
       scx
