@@ -1,5 +1,6 @@
 {
   flake.nixosModules.user-drobson03 = {config, ...}: let
+    keys = import ../keys.nix;
     username = "drobson03";
     fullName = "Darcy Robson";
     vcsEmail = "17976794+drobson03@users.noreply.github.com";
@@ -16,6 +17,7 @@
           then ["docker"]
           else []
         );
+      openssh.authorizedKeys.keys = [keys.${username}];
       hashedPasswordFile = config.age.secrets.drobson03.path;
     };
 
