@@ -638,6 +638,26 @@
         "type": "github"
       }
     },
+    "osu-lazer": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787827176,
+        "narHash": "sha256-wcJt4gq8Q4Os2EdUVhlcOjBLZX4j+DHfTgzZtsRog54=",
+        "owner": "repinek",
+        "repo": "osu-lazer-flake",
+        "rev": "fde37c10b381cacc43b42a08ab0e63aea6a019db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "repinek",
+        "repo": "osu-lazer-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -650,7 +670,9 @@
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",
         "nur": "nur",
-        "stylix": "stylix"
+        "osu-lazer": "osu-lazer",
+        "stylix": "stylix",
+        "zen-browser": "zen-browser"
       }
     },
     "stylix": {
@@ -849,6 +871,30 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789239533,
+        "narHash": "sha256-x6LDRbyl+trEnwrFth2SAdDf8x4SM7DWcjmR2JUxtAg=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "b66d03970382d5185e040110b24ecb7a39df0e80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "ref": "beta",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

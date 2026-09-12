@@ -5,6 +5,7 @@
 !hosts/
 !hosts/**/
 !hosts/**/*.nix
+!hosts/**/*.md
 !hosts/**/facter.json
 !images/
 !images/**/
