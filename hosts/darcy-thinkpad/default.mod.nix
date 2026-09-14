@@ -39,23 +39,38 @@ in {
           home-manager.sharedModules = with inputs.self.homeModules; [
             vim-mode
 
-            ({pkgs, ...}: {
+            ({
+              lib,
+              pkgs,
+              ...
+            }: {
               home.packages = with pkgs; [
                 teams-for-linux
+                github-cli
 
-                inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code-desktop
               ];
+              programs.chromium.package = lib.mkForce inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium;
             })
             {home.stateVersion = stateVersion;}
           ];
 
+          services.gvfs.enable = true;
+          services.udisks2.enable = true;
+          services.upower.enable = true;
+
           hardware.keyboard.qmk.enable = true;
+
+          services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
 
           system.stateVersion = stateVersion;
 
           networking.hostName = hostname;
+          networking.nftables.enable = true;
 
           time.timeZone = "Australia/Brisbane";
           i18n.defaultLocale = "en_AU.UTF-8";
