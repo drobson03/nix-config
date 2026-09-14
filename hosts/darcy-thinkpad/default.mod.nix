@@ -11,6 +11,7 @@ in {
         {nixpkgs.hostPlatform = system;}
 
         bluetooth
+        displaylink
         docker
         obsidian
         nixvim
