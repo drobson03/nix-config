@@ -10,6 +10,7 @@
     programs.git.settings = {
       merge.conflictStyle = "diff3";
       init.defaultBranch = "main";
+      url."git@github.com:".insteadOf = "https://github.com/";
     };
   };
 }
