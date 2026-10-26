@@ -15,7 +15,6 @@
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod"];
   boot.kernelModules = ["kvm-amd"];
 
-  # Current Arch partitions. Update these if the NixOS installation reformats them.
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/e860830b-3dfc-4789-82c5-5a53dd00e1bd";
     fsType = "xfs";
@@ -27,7 +26,6 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  # Swap is provided by the desktop preset's zram module.
   swapDevices = [];
 
   hardware.enableRedistributableFirmware = true;
@@ -39,7 +37,7 @@
     modesetting.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  unfree.allowedNames = ["nvidia-x11" "nvidia-settings"];
+  unfree.allowedNames = ["nvidia-settings" "nvidia-x11"];
 
   hardware.facter.reportPath = ./facter.json;
 }
