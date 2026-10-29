@@ -16,19 +16,13 @@ in {
         obsidian
         nixvim
         preset-desktop
+        t3code
 
         user-drobson03
         user-root
 
         {
           home-manager.sharedModules = [inputs.self.homeModules.pi];
-
-          nix.settings = {
-            extra-substituters = ["https://cache.numtide.com"];
-            extra-trusted-public-keys = [
-              "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-            ];
-          };
         }
 
         ./hardware.nix
@@ -40,14 +34,10 @@ in {
             vim-mode
 
             ({
-              config,
               lib,
               pkgs,
               ...
-            }: let
-              t3code = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code;
-              t3Home = "${config.home.homeDirectory}/.t3";
-            in {
+            }: {
               home.packages = with pkgs; [
                 teams-for-linux
                 github-cli
@@ -55,40 +45,8 @@ in {
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
-                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code-desktop
-                t3code
               ];
               programs.chromium.package = lib.mkForce inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium;
-
-              systemd.user.services.t3code-server = {
-                Unit = {
-                  Description = "T3 Code server";
-                  StartLimitIntervalSec = 300;
-                  StartLimitBurst = 5;
-                };
-
-                Service = {
-                  Type = "simple";
-                  WorkingDirectory = "%h";
-                  Environment = [
-                    "T3CODE_HOME=${t3Home}"
-                    "T3CODE_HOST=0.0.0.0"
-                  ];
-                  EnvironmentFile = "-${t3Home}/service.env";
-                  # `serve` runs the packaged server directly. `__service-launcher` would
-                  # instead exec ~/.t3/runtime/versions/<activeVersion>/t3, bypassing Nix.
-                  ExecStart = "${lib.getExe t3code} serve";
-                  KillMode = "mixed";
-                  OOMPolicy = "continue";
-                  Restart = "always";
-                  RestartSec = 5;
-                  CPUWeight = 1000;
-                  IOWeight = 1000;
-                  ManagedOOMPreference = "avoid";
-                };
-
-                Install.WantedBy = ["default.target"];
-              };
             })
             {home.stateVersion = stateVersion;}
           ];
