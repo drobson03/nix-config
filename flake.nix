@@ -26,11 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake/beta";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     osu-lazer = {
       url = "github:repinek/osu-lazer-flake";
       inputs.nixpkgs.follows = "nixpkgs";

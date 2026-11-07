@@ -25,7 +25,6 @@
     home.packages = with pkgs; [
       anki
       vesktop
-      inputs.zen-browser.packages.${stdenv.hostPlatform.system}.beta
 
       pwvucontrol
       tidal-hifi
@@ -40,9 +39,9 @@
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = "zen-beta.desktop";
-        "x-scheme-handler/http" = "zen-beta.desktop";
-        "x-scheme-handler/https" = "zen-beta.desktop";
+        "text/html" = "helium.desktop";
+        "x-scheme-handler/http" = "helium.desktop";
+        "x-scheme-handler/https" = "helium.desktop";
         "x-scheme-handler/discord" = "vesktop.desktop";
         "x-scheme-handler/t3code" = "com.t3tools.T3Code.desktop";
         "x-scheme-handler/tidal" = "tidal-hifi.desktop";
