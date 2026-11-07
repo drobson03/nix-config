@@ -35,5 +35,18 @@
         channel = "tachyon";
       })
     ];
+
+    xdg.configFile."mimeapps.list".force = true;
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "zen-beta.desktop";
+        "x-scheme-handler/http" = "zen-beta.desktop";
+        "x-scheme-handler/https" = "zen-beta.desktop";
+        "x-scheme-handler/discord" = "vesktop.desktop";
+        "x-scheme-handler/t3code" = "com.t3tools.T3Code.desktop";
+        "x-scheme-handler/tidal" = "tidal-hifi.desktop";
+      };
+    };
   };
 }

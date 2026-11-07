@@ -5,6 +5,8 @@
     ];
 
     stylix.enable = true;
+    stylix.image = ./wallpapers/gold.png;
+    stylix.polarity = "dark";
     stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/chinoiserie-midnight.yaml";
 
     stylix.fonts = {

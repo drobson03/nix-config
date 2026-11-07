@@ -11,7 +11,6 @@
       git
       gtk
       hyprlock
-      hyprpaper
       jujutsu
       mako
       mergiraf
@@ -22,6 +21,7 @@
       qt
       ripgrep
       starship
+      swaybg
       tmux
       waybar
       wayland

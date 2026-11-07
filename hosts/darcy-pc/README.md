@@ -136,7 +136,7 @@ profile. “Added” describes a declaration, not a completed build.
 | `hyperfine` | Existing | Shared desktop modules and host hardware configuration |
 | `hyprland` | Integration | NixOS Hyprland/UWSM session enabled alongside Niri; existing Arch Hyprland dotfiles are not imported |
 | `hyprlock` | Existing | Shared desktop modules and host hardware configuration |
-| `hyprpaper` | Existing | Shared desktop modules and host hardware configuration |
+| `hyprpaper` | Replaced | `swaybg` user service in `modules/swaybg.mod.nix` |
 | `hyprpicker` | Existing | Shared desktop modules and host hardware configuration |
 | `imagemagick` | Added | `pkgs.imagemagick` in `packages.nix` |
 | `inkscape` | Added | `pkgs.inkscape` in `packages.nix` |
