@@ -7,6 +7,7 @@
 !hosts/**/*.nix
 !hosts/**/*.md
 !hosts/**/facter.json
+!hosts/**/easyeffects/*.json
 !images/
 !images/**/
 !images/**/*.nix

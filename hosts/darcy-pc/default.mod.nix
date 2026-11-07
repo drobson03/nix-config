@@ -31,6 +31,7 @@ in {
           };
         }
 
+        ./audio.nix
         ./hardware.nix
         (import ./packages.nix {inherit inputs;})
 

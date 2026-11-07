@@ -27,7 +27,6 @@
       vesktop
       inputs.zen-browser.packages.${stdenv.hostPlatform.system}.beta
 
-      easyeffects
       pwvucontrol
       tidal-hifi
 
