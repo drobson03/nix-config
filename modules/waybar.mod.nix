@@ -1,5 +1,5 @@
 {
-  flake.homeModules.waybar = {
+  flake.homeModules.waybar = {lib, ...}: {
     programs.waybar.enable = true;
     programs.waybar.systemd.enable = true;
     programs.waybar.settings.primary = {
@@ -142,14 +142,14 @@
       }
     '';
 
-    programs.niri.settings.binds."Mod+Shift+W".action.spawn = ["sh" "-c" "pkill waybar && waybar"];
-
-    wayland.windowManager.hyprland.settings.exec-once = [
-      "waybar"
     ];
 
+    # Waybar is owned by waybar.service. Restart it through systemd: a bar launched
+    # by hand leaves the unit stopped, and activation then starts a second one.
+    programs.niri.settings.binds."Mod+Shift+W".action.spawn = ["systemctl" "--user" "restart" "waybar.service"];
+
     wayland.windowManager.hyprland.settings.bind = [
-      "SUPER SHIFT, W, exec, pkill waybar && waybar"
+      "SUPER SHIFT, W, exec, systemctl --user restart waybar.service"
     ];
   };
 }
