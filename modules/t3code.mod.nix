@@ -49,7 +49,7 @@ in {
           WorkingDirectory = "%h";
           Environment = [
             "T3CODE_HOME=${t3Home}"
-            "T3CODE_HOST=0.0.0.0"
+            "T3CODE_HOST=::"
           ];
         };
 
