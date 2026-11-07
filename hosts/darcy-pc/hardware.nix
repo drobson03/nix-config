@@ -40,4 +40,18 @@
   unfree.allowedNames = ["nvidia-settings" "nvidia-x11"];
 
   hardware.facter.reportPath = ./facter.json;
+
+  home-manager.sharedModules = [
+    {
+      programs.niri.settings.outputs = {
+        "ASUSTek COMPUTER INC ROG PG279QM #GjMYMxgwABQA" = {
+          mode = {
+            width = 2560;
+            height = 1440;
+            refresh = 239.970;
+          };
+        };
+      };
+    }
+  ];
 }

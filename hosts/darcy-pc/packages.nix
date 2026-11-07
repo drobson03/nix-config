@@ -1,11 +1,8 @@
-{inputs}: {
-  lib,
-  pkgs,
-  ...
-}: {
+{inputs}: {pkgs, ...}: {
   unfree.allowedNames = [
     "steam"
     "steam-unwrapped"
+    "castlabs-electron"
   ];
 
   programs.steam = {
@@ -18,8 +15,6 @@
     extraPackages = [pkgs.nvidia-vaapi-driver];
   };
 
-  services.timesyncd.enable = false;
-  services.resolved.enable = true;
   services.ananicy = {
     enable = true;
     package = pkgs.ananicy-cpp;
@@ -37,7 +32,9 @@
       tidal-hifi
 
       prismlauncher
-      inputs.osu-lazer.packages.${stdenv.hostPlatform.system}.osu-lazer-tachyon-bin
+      (inputs.osu-lazer.packages.${stdenv.hostPlatform.system}.osu-lazer-bin.override {
+        channel = "tachyon";
+      })
     ];
   };
 }

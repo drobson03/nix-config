@@ -15,6 +15,7 @@ in {
         obsidian
         nixvim
         preset-desktop
+        t3code
 
         user-drobson03
         user-root
@@ -38,9 +39,8 @@ in {
             vim-mode
 
             ({pkgs, ...}: {
-              home.packages = with pkgs; [
+              home.packages = [
                 inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium
-                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
               ];
             })
