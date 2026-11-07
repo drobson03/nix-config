@@ -9,6 +9,12 @@
     stylix.polarity = "dark";
     stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/chinoiserie-midnight.yaml";
 
+    stylix.cursor = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      size = 24;
+    };
+
     stylix.fonts = {
       sansSerif.name = "InterVariable";
       sansSerif.package = pkgs.inter;

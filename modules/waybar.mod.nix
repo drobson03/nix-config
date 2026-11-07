@@ -142,6 +142,16 @@
       }
     '';
 
+    # Stylix appends its own opaque background, so this has to come after it.
+    # Scoped to the bar so tooltips keep Stylix's background.
+    imports = [
+      {
+        programs.waybar.style = lib.mkAfter ''
+          window#waybar {
+            background: transparent;
+          }
+        '';
+      }
     ];
 
     # Waybar is owned by waybar.service. Restart it through systemd: a bar launched
