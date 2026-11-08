@@ -34,6 +34,7 @@ in {
         ./audio.nix
         ./hardware.nix
         (import ./packages.nix {inherit inputs;})
+        (import ./prismlauncher.nix {inherit inputs;})
 
         {
           home-manager.sharedModules = with inputs.self.homeModules; [

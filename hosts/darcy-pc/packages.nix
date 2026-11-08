@@ -29,7 +29,6 @@
       pwvucontrol
       tidal-hifi
 
-      prismlauncher
       (inputs.osu-lazer.packages.${stdenv.hostPlatform.system}.osu-lazer-bin.override {
         channel = "tachyon";
       })
