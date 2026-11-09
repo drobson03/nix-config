@@ -20,6 +20,13 @@
     IOWeight = 1000;
     ManagedOOMPreference = "avoid";
   };
+
+  # Downloaded binaries (T3's chrome-headless-shell) need nix-ld, whose
+  # variables are only set for login sessions.
+  nixLdEnv = {
+    NIX_LD = "/run/current-system/sw/share/nix-ld/lib/ld.so";
+    NIX_LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
+  };
 in {
   flake.homeModules.t3code = {
     config,
@@ -52,6 +59,8 @@ in {
           Environment = [
             "T3CODE_HOME=${t3Home}"
             "T3CODE_HOST=::"
+            "NIX_LD=${nixLdEnv.NIX_LD}"
+            "NIX_LD_LIBRARY_PATH=${nixLdEnv.NIX_LD_LIBRARY_PATH}"
             "SHELL=${pkgs.bashInteractive}/bin/bash"
             "PATH=${lib.concatStringsSep ":" [
               "/run/wrappers/bin"
@@ -68,6 +77,7 @@ in {
   flake.nixosModules.t3code = {
     imports = [
       inputs.self.nixosModules.llm-agents-cache
+      inputs.self.nixosModules.agent-toolbox
     ];
 
     home-manager.sharedModules = [
@@ -87,6 +97,7 @@ in {
   in {
     imports = [
       inputs.self.nixosModules.llm-agents-cache
+      inputs.self.nixosModules.agent-toolbox
     ];
 
     options.services.t3code-server.user = lib.mkOption {
@@ -112,10 +123,12 @@ in {
           "/run/current-system/sw"
         ];
 
-        environment = {
-          T3CODE_HOME = dataDir;
-          T3CODE_PORT = "3773";
-        };
+        environment =
+          nixLdEnv
+          // {
+            T3CODE_HOME = dataDir;
+            T3CODE_PORT = "3773";
+          };
 
         serviceConfig =
           serviceConfig {
