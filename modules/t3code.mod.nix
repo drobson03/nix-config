@@ -47,9 +47,17 @@ in {
         }
         // {
           WorkingDirectory = "%h";
+          # Agents and terminals need the full user environment, not the unit's minimal PATH.
+          # T3 Code opens terminals with $SHELL; use bash rather than the zsh login shell.
           Environment = [
             "T3CODE_HOME=${t3Home}"
             "T3CODE_HOST=::"
+            "SHELL=${pkgs.bashInteractive}/bin/bash"
+            "PATH=${lib.concatStringsSep ":" [
+              "/run/wrappers/bin"
+              "/etc/profiles/per-user/${config.home.username}/bin"
+              "/run/current-system/sw/bin"
+            ]}"
           ];
         };
 
