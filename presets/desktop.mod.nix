@@ -52,6 +52,7 @@
       pipewire
       scx
       stylix
+      udisks2
       wayland
       yubikey
       zram
