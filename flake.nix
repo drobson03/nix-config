@@ -31,6 +31,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     prismix = {
       url = "git+https://codeberg.org/OliMoli/prismix?ref=refs/tags/v0.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
