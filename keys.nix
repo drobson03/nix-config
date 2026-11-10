@@ -9,6 +9,7 @@ let
   hosts = {
     darcy-pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0Dcg/PinjGItLDui+V7ArmhYhUwFD5KRDNp539jYp4";
     darcy-thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKxWwlA2L8vIKjnObO5AOZ2UfuEA6VRzVTloIFb++o8v";
+    valinor = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEq+G+2YucYJR1RrO4ezXZqp9ORaZ9balmr6UaFFZAHB";
   };
 
   admins = {
