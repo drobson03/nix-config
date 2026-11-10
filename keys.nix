@@ -1,7 +1,5 @@
 let
   drobson03 = {
-    legacy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJiJCC03L2GRX20ceaRfAIQLSyGw8+nWUY0uoMZWwmC7";
-
     darcy-pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYPSTNhFndq+ZSIctjl/2nuN/oDb4Vls9zIkxU8Zghj";
     # darcy-thinkpad = "ssh-ed25519 ...";
 
@@ -13,12 +11,7 @@ let
     darcy-thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKxWwlA2L8vIKjnObO5AOZ2UfuEA6VRzVTloIFb++o8v";
   };
 
-  # age recipients that can edit secrets with ragenix.
   admins = {
-    # Legacy keys. Remove once yubikey and backup are set, then `ragenix --rekey`.
-    legacy = drobson03.legacy;
-    legacy-2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMjk5YnMYik0fDpfS2QoNJzKefENiiqTf6IQQw5WW7Of";
-
     yubikey = "age1yubikey1qfvrqlm0clsxnvapes9mxjpjrema8rjg38zcmug03suv5r750ruvycpwxmk";
 
     backup = "age1f7p7spf40s8muu7vwee6jyekrhgwuy8gyemsauc38jw5hnuews2qugrywm";
