@@ -25,6 +25,7 @@
       tmux
       waybar
       wayland
+      yubikey
       zsh
     ];
   };
@@ -52,6 +53,7 @@
       scx
       stylix
       wayland
+      yubikey
       zram
       zsh
 

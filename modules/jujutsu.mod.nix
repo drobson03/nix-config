@@ -49,7 +49,10 @@
       git.push = "origin";
 
       signing.backend = "ssh";
-      signing.behavior = "own";
+      # Sign on push rather than on every rewrite, so a YubiKey-backed key
+      # doesn't need a touch for each jj command.
+      signing.behavior = "drop";
+      git.sign-on-push = true;
     };
   };
 }

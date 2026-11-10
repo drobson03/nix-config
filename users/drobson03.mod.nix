@@ -17,7 +17,7 @@
           then ["docker"]
           else []
         );
-      openssh.authorizedKeys.keys = [keys.${username}];
+      openssh.authorizedKeys.keys = keys.${username};
       hashedPasswordFile = config.age.secrets.drobson03.path;
     };
 
