@@ -38,6 +38,7 @@
       ghostty
       greetd
       gtk
+      gvfs
       home-manager
       hyprlock
       immutable-users
