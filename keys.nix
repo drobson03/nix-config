@@ -1,20 +1,13 @@
 let
-  # SSH keys that can log in as drobson03. Generate one per machine with
-  # `ssh-keygen -t ed25519` and never copy private keys between machines.
   drobson03 = {
-    # Legacy key copied between machines. Remove once the per-machine keys and
-    # YubiKey below are in place.
     legacy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJiJCC03L2GRX20ceaRfAIQLSyGw8+nWUY0uoMZWwmC7";
 
-    # darcy-pc = "ssh-ed25519 ...";
+    darcy-pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYPSTNhFndq+ZSIctjl/2nuN/oDb4Vls9zIkxU8Zghj";
     # darcy-thinkpad = "ssh-ed25519 ...";
 
-    # FIDO2 resident key. `-sk` keys can't be age recipients, so it only goes
-    # in authorized keys, never `admins`.
-    # yubikey = "sk-ssh-ed25519@openssh.com ...";
+    yubikey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP1Ao3GJJt7x9jUpSReV9ANnvr3CH+HuyQu9ZJy0iOb0AAAADXNzaDpkcm9ic29uMDM=";
   };
 
-  # Host keys (/etc/ssh/ssh_host_ed25519_key.pub), used to decrypt secrets at boot.
   hosts = {
     darcy-pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0Dcg/PinjGItLDui+V7ArmhYhUwFD5KRDNp539jYp4";
     darcy-thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKxWwlA2L8vIKjnObO5AOZ2UfuEA6VRzVTloIFb++o8v";
@@ -26,11 +19,9 @@ let
     legacy = drobson03.legacy;
     legacy-2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMjk5YnMYik0fDpfS2QoNJzKefENiiqTf6IQQw5WW7Of";
 
-    # `age-plugin-yubikey --generate`, then the `age1yubikey1...` recipient.
-    # yubikey = "age1yubikey1...";
+    yubikey = "age1yubikey1qfvrqlm0clsxnvapes9mxjpjrema8rjg38zcmug03suv5r750ruvycpwxmk";
 
-    # `age-keygen`, private key kept offline in case the YubiKey is lost.
-    # backup = "age1...";
+    backup = "age1f7p7spf40s8muu7vwee6jyekrhgwuy8gyemsauc38jw5hnuews2qugrywm";
   };
 in
   hosts
