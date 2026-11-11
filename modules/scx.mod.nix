@@ -1,5 +1,8 @@
 {
   flake.nixosModules.scx = {
-    services.scx.enable = true;
+    services.scx-loader = {
+      enable = true;
+      config.default_sched = "scx_rustland";
+    };
   };
 }
