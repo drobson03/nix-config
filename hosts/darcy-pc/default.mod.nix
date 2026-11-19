@@ -43,6 +43,7 @@ in {
             ({pkgs, ...}: {
               home.packages = [
                 inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.Ev357.helium
+                inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.antigravity-cli
                 inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
               ];
             })
