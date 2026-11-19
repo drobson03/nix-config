@@ -3,6 +3,8 @@
 
   t3code = pkgs: inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code;
 
+  antigravityAcp = pkgs: inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.antigravity-acp;
+
   serviceConfig = {
     dataDir,
     pkgs,
@@ -28,6 +30,19 @@
     NIX_LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
   };
 in {
+  # T3's Antigravity driver looks up `agy_acp_server.par` on PATH and treats a
+  # candidate whose real path is named `agy` as the CLI, launching `agy acp`.
+  # Exposing that name lets it use the Nix-built CLI without a T3-managed
+  # download or a custom binary path in settings.
+  flake.packages = lib.genAttrs ["x86_64-linux" "aarch64-linux"] (system: let
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
+  in {
+    antigravity-acp = pkgs.runCommand "antigravity-acp" {} ''
+      mkdir -p $out/bin
+      ln -s ${lib.getExe' inputs.llm-agents.packages.${system}.antigravity-cli "agy"} $out/bin/agy_acp_server.par
+    '';
+  });
+
   flake.homeModules.t3code = {
     config,
     pkgs,
@@ -37,6 +52,7 @@ in {
   in {
     home.packages = [
       (t3code pkgs)
+      (antigravityAcp pkgs)
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.t3code-desktop
     ];
 
@@ -106,7 +122,10 @@ in {
     };
 
     config = {
-      environment.systemPackages = [(t3code pkgs)];
+      environment.systemPackages = [
+        (t3code pkgs)
+        (antigravityAcp pkgs)
+      ];
 
       systemd.services.t3code-server = {
         description = "T3 Code server";
