@@ -58,11 +58,21 @@ in {
   };
 
   config = {
-    microvm.vms.${name} = {
-      specialArgs = {inherit inputs;};
-      config = import ./t3code-guest.nix {
-        inherit (config.networking) domain;
-        inherit admins guestAddress guestAddress6 hostAddress hostAddress6 port storeOverlayImage tap;
+    microvm.vms.${name}.config = {
+      imports = [inputs.self.nixosModules.t3code-guest];
+
+      networking.hostName = name;
+      networking.domain = config.networking.domain;
+      microvm = {
+        vcpu = 4;
+        mem = 12 * 1024;
+      };
+
+      t3code-guest = {
+        inherit admins tap storeOverlayImage hostAddress hostAddress6;
+        mac = "02:00:0a:4d:00:02";
+        address = guestAddress;
+        address6 = guestAddress6;
       };
     };
 

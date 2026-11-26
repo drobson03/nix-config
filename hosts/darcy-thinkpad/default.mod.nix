@@ -26,6 +26,7 @@ in {
         }
 
         ./hardware.nix
+        (import ./t3code.nix {inherit inputs;})
         "${inputs.nixos-hardware}/lenovo/thinkpad/p14s/amd/gen6"
         "${inputs.nixos-hardware}/common/wifi/mediatek/mt7925"
 
